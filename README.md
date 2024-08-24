@@ -1,5 +1,6 @@
-URadio App
-Descripción
+
+
+
 URadio Player App es una aplicación de reproducción de radio en línea construida con React. Permite a los usuarios escuchar una transmisión en vivo de radio, controlar la reproducción (play/pause), ajustar el volumen, y alternar entre temas claro y oscuro. Además, muestra información en tiempo real sobre la canción actual, incluyendo el título, el artista y la imagen del álbum.
 
 Características
