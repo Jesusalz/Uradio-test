@@ -14,7 +14,7 @@ React: Biblioteca de JavaScript para construir interfaces de usuario.
 Tailwind CSS: Framework CSS para un diseño responsivo y moderno.
 Fetch API: Para obtener metadatos de la canción desde una API externa.
 
-Instalación Clona este repositorio: git clone , Navega al directorio del proyecto: cd , Instala las dependencias: npm install Inicia el servidor de desarrollo: npm run dev
+Instalación Clona este repositorio: git clone https://github.com/Jesusalz/Uradio-test.git , Navega al directorio del proyecto: cd Uradio-test , Instala las dependencias: npm install Inicia el servidor de desarrollo: npm run dev
 
 Contribuciones
 Las contribuciones son bienvenidas. Si deseas colaborar en el desarrollo de esta aplicación Sos libre de abrir un issue o enviar un pull request para mejorar este proyecto.
