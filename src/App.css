@@ -10,12 +10,12 @@
 }
 
 .app.light {
-  background: linear-gradient(to right, #310091, #000000); 
+  background: linear-gradient(to top,#000000,#093c6d); 
   color: white;
 }
 
 .app.dark {
-  background: #333;
+  background: linear-gradient(to top,#000000, #310091);
   color: white;
 }
 
