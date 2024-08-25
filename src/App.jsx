@@ -19,7 +19,7 @@ const App = () => {
             const response = await fetch('https://az03.streaminghd.net.ar/cp/get_info.php?p=8080');
             const data = await response.json();
             setSongTitle(data.title || 'Desconocido');
-            setAlbumArt(data.art || 'https://i1.sndcdn.com/avatars-xrypX7Vc1IWKvnBu-reTPnQ-t240x240.jpg');
+            setAlbumArt(data.art || '/defaultart.webp');
         } catch (error) {
             setError('Error al cargar los metadatos.');
         }
