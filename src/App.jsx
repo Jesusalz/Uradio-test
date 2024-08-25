@@ -10,9 +10,9 @@ const App = () => {
     const [volume, setVolume] = useState(1);
     const [isDarkTheme, setIsDarkTheme] = useState(false);
     const [songTitle, setSongTitle] = useState('');
-    const [artist, setArtist] = useState(''); // No se usa en este caso
     const [albumArt, setAlbumArt] = useState('');
     const [error, setError] = useState(null);
+    const [imageLoaded, setImageLoaded] = useState(false);
 
     const fetchMetadata = async () => {
         try {
@@ -31,6 +31,15 @@ const App = () => {
         }, 10000); 
         return () => clearInterval(interval); 
     }, []);
+
+    useEffect(() => {
+        if (albumArt) {
+            setImageLoaded(false);
+            const img = new Image();
+            img.src = albumArt;
+            img.onload = () => setImageLoaded(true);
+        }
+    }, [albumArt]);
 
     const handlePlayPause = () => {
         if (audioRef.current) {
@@ -64,12 +73,17 @@ const App = () => {
 
     return (
         <div className={`app ${isDarkTheme ? 'dark' : 'light'} flex flex-col items-center justify-center h-screen`}>
-            <h1 className="text-3xl font-bold mb-4">Uculturemix Radio Test</h1>
-            <div className="flex flex-col items-center mb-4 relative">
+            <h1 className="text-3xl font-bold mb-4">Uculturemix Radio</h1>
+            <div className="cover-container flex flex-col items-center mb-4 relative">
+                <img 
+                    src="/defaultart.webp" 
+                    alt="Imagen Predeterminada" 
+                    className={`default-art ${imageLoaded ? 'hidden' : 'block'}`} 
+                />
                 <img 
                     src={albumArt} 
-                    alt="Album Art" 
-                    className="w-48 h-48 rounded-lg shadow-lg transition-transform transform hover:scale-110 hover:rotate-6 hover:opacity-90" 
+                    alt="Portada del Álbum" 
+                    className={`album-art ${imageLoaded ? 'loaded' : ''}`}
                 />
                 <p className="mt-2 text-xl">{songTitle}</p>
             </div>

@@ -58,3 +58,28 @@
   height: 150px;
   border-radius: 10px;
 }
+.cover-container {
+  position: relative;
+  width: 12rem; /* Ajusta el tamaño si es necesario */
+  height: 12rem; /* Ajusta el tamaño si es necesario */
+}
+
+.default-art,
+.album-art {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  transition: opacity 0.5s ease;
+}
+
+.album-art {
+  opacity: 0; /* Oculta la imagen del álbum por defecto */
+}
+
+.album-art.loaded {
+  opacity: 1; /* Muestra la imagen del álbum cuando esté cargada */
+}
