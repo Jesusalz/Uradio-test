@@ -1,85 +1,95 @@
-.app {
-  text-align: center;
-  padding: 20px;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transition: background-color 0.3s;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif; /* Aplicar la fuente Inter */
+  transition: background-color 0.5s, color 0.5s;
 }
 
-.app.light {
-  background: linear-gradient(to top,#000000,#093c6d); 
-  color: white;
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(to top, #000000, #310091); /* Gradiente negro en la base y color claro hacia arriba */
+  color: #ffffff; /* Texto blanco para mejor contraste en el fondo oscuro */
+  transition: background-color 0.5s, color 0.5s;
 }
 
 .app.dark {
-  background: linear-gradient(to top,#000000, #310091);
-  color: white;
+  background: linear-gradient(to top, #000000, #093764); /* Gradiente negro en la base y color claro hacia arriba para el tema oscuro */
+  color: #ffffff; /* Texto blanco para el tema oscuro */
 }
 
-
-.controls {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.controls button {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 24px;
-  margin: 0 10px;
-  cursor: pointer;
-}
-
-.controls input[type="range"] {
-  margin: 0 10px;
-  width: 150px;
-}
-.song-info {
-  margin-top: 20px;
-  color: white;
-  text-align: center;
-}
-
-.song-info img {
-  margin-top: 10px;
-  width: 150px;
-  height: 150px;
-  border-radius: 10px;
-}
-.album-art {
-  margin-top: 10px;
-  width: 150px;
-  height: 150px;
-  border-radius: 10px;
-}
 .cover-container {
   position: relative;
-  width: 12rem; /* Ajusta el tamaño si es necesario */
-  height: 12rem; /* Ajusta el tamaño si es necesario */
 }
 
-.default-art,
 .album-art {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
-  border-radius: 0.5rem;
-  transition: opacity 0.5s ease;
-}
-
-.album-art {
-  opacity: 0; /* Oculta la imagen del álbum por defecto */
+  border-radius: 8px;
+  transition: transform 0.5s ease;
 }
 
 .album-art.loaded {
-  opacity: 1; /* Muestra la imagen del álbum cuando esté cargada */
+  animation: fadeIn 1s ease-in;
+}
+
+.default-art {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.controls button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100px;
+  height: 8px;
+  background: #ddd;
+  border-radius: 5px;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity .15s ease-in-out;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #333;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #333;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.1);
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.transition-transform {
+  transition: transform 0.3s ease;
 }

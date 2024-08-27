@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPause, faVolumeUp, faVolumeMute, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import gsap from 'gsap';
 import './App.css';
 
 const App = () => {
@@ -41,6 +42,16 @@ const App = () => {
         }
     }, [albumArt]);
 
+    useEffect(() => {
+        gsap.fromTo(".controls", { opacity: 0 }, { opacity: 1, duration: 1, delay: 0.5 });
+
+        gsap.to("body", {
+            backgroundColor: isDarkTheme ? "#121212" : "#ffffff",
+            color: isDarkTheme ? "#ffffff" : "#000000",
+            duration: 0.5
+        });
+    }, [isDarkTheme]);
+
     const handlePlayPause = () => {
         if (audioRef.current) {
             if (isPlaying) {
@@ -73,7 +84,7 @@ const App = () => {
 
     return (
         <div className={`app ${isDarkTheme ? 'dark' : 'light'} flex flex-col items-center justify-center h-screen`}>
-            <h1 className="text-3xl font-bold mb-4">Uculturemix Radio</h1>
+            <h1 className="text-3xl font-bold mb-4">Uculturemix</h1>
             <div className="cover-container flex flex-col items-center mb-4 relative">
                 <img 
                     src="/defaultart.webp" 
@@ -85,14 +96,20 @@ const App = () => {
                     alt="Portada del Álbum" 
                     className={`album-art ${imageLoaded ? 'loaded' : ''}`}
                 />
-                <p className="mt-2 text-xl">{songTitle}</p>
+                <p className="mt-2 text-xl font-bold">{songTitle}</p>
             </div>
             <audio ref={audioRef} src="https://az03.streaminghd.net.ar/8080/stream" />
             <div className="controls flex items-center mt-4">
-                <button className="transition transform hover:scale-105 mx-2" onClick={handlePlayPause}>
+                <button 
+                    className="transition-transform hover:scale-110 mx-2 p-2" 
+                    onClick={handlePlayPause}
+                >
                     <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} />
                 </button>
-                <button className="transition transform hover:scale-105 mx-2" onClick={handleMute}>
+                <button 
+                    className="transition-transform hover:scale-110 mx-2 p-2" 
+                    onClick={handleMute}
+                >
                     <FontAwesomeIcon icon={isMuted ? faVolumeMute : faVolumeUp} />
                 </button>
                 <input
@@ -104,7 +121,10 @@ const App = () => {
                     onChange={handleVolumeChange}
                     className="slider mx-2 w-32"
                 />
-                <button className="transition transform hover:scale-105 mx-2" onClick={toggleTheme}>
+                <button 
+                    className="transition-transform hover:scale-110 mx-2 p-2" 
+                    onClick={toggleTheme}
+                >
                     <FontAwesomeIcon icon={isDarkTheme ? faSun : faMoon} />
                 </button>
             </div>
